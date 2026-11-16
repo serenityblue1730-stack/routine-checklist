@@ -233,6 +233,101 @@ nav.tabs button.on{color:var(--ink);border-bottom-color:var(--ink);}
 .bctrl .bcnt{min-width:36px;text-align:center;font-size:13px;font-weight:800;color:#bdb6ac;}
 .bctrl .bcnt.on{color:var(--kid-deep);}
 
+/* ── date bar (오늘 탭) ───────────────── */
+.datebar{display:flex;align-items:center;gap:6px;margin:14px 0 6px;}
+.nvb{
+  border:1px solid var(--line);background:var(--card);color:var(--sub);
+  font:inherit;font-size:11.5px;font-weight:800;letter-spacing:-.2px;
+  padding:9px;border-radius:11px;cursor:pointer;white-space:nowrap;
+}
+.nvb:active{background:#f0ebe4;}
+.dbcenter{flex:1;min-width:0;text-align:center;}
+.dbdate{font-size:15.5px;font-weight:800;letter-spacing:-.4px;line-height:1.25;}
+.dbdate small{display:block;font-size:10.5px;color:var(--sub);font-weight:700;letter-spacing:0;margin-top:1px;}
+.dbtoday{
+  margin-top:4px;border:1px solid var(--line);background:#fff;color:var(--sub);
+  font:inherit;font-size:11px;font-weight:800;padding:3px 11px;border-radius:999px;cursor:pointer;
+}
+.dbtoday.on{border-color:var(--gold);color:#a97f2e;background:#fdf7e9;}
+
+.daybar button{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  font-size:11px;font-weight:700;line-height:1.2;padding:6px 0 7px;letter-spacing:-.2px;
+}
+.daybar button .dn{font-size:14.5px;font-weight:800;letter-spacing:-.4px;}
+.daybar button.future{color:#c9c2b9;}
+
+/* ── 주간 이동 바 ───────────────────── */
+.weekbar{display:flex;align-items:center;gap:6px;margin:14px 0 2px;}
+.wvlabel{
+  flex:1;min-width:0;border:none;background:transparent;font:inherit;
+  font-size:13.5px;font-weight:800;color:var(--ink);letter-spacing:-.3px;
+  padding:7px 0;cursor:pointer;line-height:1.3;
+}
+.wvlabel small{display:block;font-size:10.5px;color:#a97f2e;font-weight:800;margin-top:1px;}
+
+/* ── 달력 ───────────────────────────── */
+.calbar{display:flex;align-items:center;gap:6px;margin:14px 0 10px;}
+.calbar .cmonth{
+  flex:1;border:none;background:transparent;color:var(--ink);text-align:center;
+  font-size:17px;font-weight:800;letter-spacing:-.5px;padding:6px 0;
+}
+.callegend{display:flex;flex-wrap:wrap;gap:9px;font-size:10.5px;color:var(--sub);font-weight:700;margin:0 2px 9px;}
+.callegend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:3px;vertical-align:1px;}
+.callegend i.mom{background:var(--mom);}
+.callegend i.kid{background:var(--kid);}
+.callegend i.ex{background:var(--gold);border-radius:2px;width:8px;height:8px;}
+.calhead{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:0 0 5px;}
+.calhead span{text-align:center;font-size:10.5px;font-weight:800;color:var(--sub);}
+.calhead span.sat{color:#7f97a7;}
+.calhead span.sun{color:#c07a6a;}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+.ccell{
+  position:relative;min-height:46px;border:1px solid var(--line);background:#fff;
+  border-radius:12px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  font:inherit;cursor:pointer;
+}
+.ccell.blank{background:transparent;border-color:transparent;cursor:default;}
+.ccell .cday{font-size:12px;font-weight:800;color:#5b554f;line-height:1;}
+.ccell.today{box-shadow:0 0 0 2px rgba(217,164,65,.75);}
+.ccell.sel{border-color:var(--ink);border-width:2px;}
+.ccell.sel.today{box-shadow:0 0 0 2px rgba(217,164,65,.4);}
+.cdots{display:flex;gap:3px;}
+.cdot{width:7px;height:7px;border-radius:50%;display:block;}
+.cdot.mom{background:var(--mom);}
+.cdot.kid{background:var(--kid);}
+.cflag{position:absolute;top:2px;right:3px;font-size:8px;font-weight:800;color:#a97f2e;line-height:1;}
+
+/* 달력 날짜 요약 */
+.dhead{font-size:14.5px;font-weight:800;letter-spacing:-.3px;padding:12px 14px 2px;}
+.dhead .dtag{
+  font-size:10.5px;font-weight:800;color:#a97f2e;background:#fdf7e9;border:1px solid #f0e2c2;
+  border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px;
+}
+.dsrow{display:flex;align-items:center;gap:7px;padding:7px 14px 0;font-size:12.5px;flex-wrap:wrap;}
+.dsrow .dsname{font-weight:800;}
+.dsrow .dspct{font-weight:800;font-size:13px;}
+.dsrow .dsn{color:var(--sub);font-weight:700;font-size:11.5px;}
+.dsrow .gauge{display:block;flex:1 0 100%;margin-top:3px;}
+.dmeta{display:flex;flex-wrap:wrap;gap:6px;padding:11px 14px 0;}
+.dmeta span{font-size:11.5px;font-weight:700;color:var(--sub);background:#f6f2ec;border-radius:8px;padding:4px 9px;}
+.dmeta span.on{color:#6d8f6d;background:#eef3ea;}
+.dgo{
+  display:block;width:calc(100% - 28px);margin:13px 14px 13px;
+  border:1.5px solid var(--kid);background:var(--kid-soft);color:var(--kid-deep);
+  font:inherit;font-size:13.5px;font-weight:800;padding:11px 0;border-radius:12px;cursor:pointer;
+}
+.dgo:active{background:#dfeee6;}
+
+/* 이 달 누적 */
+.mstop{font-size:12px;color:var(--sub);font-weight:700;margin:0 4px 9px;}
+.mstop b{color:var(--ink);font-size:13px;}
+.msgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px;}
+.mscell{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px 11px;}
+.mscell .msn{display:block;font-size:11.5px;font-weight:800;color:var(--sub);letter-spacing:-.2px;}
+.mscell .msv{display:block;font-size:12px;font-weight:700;color:var(--sub);margin-top:3px;}
+.mscell .msv b{font-size:17px;color:var(--ink);letter-spacing:-.4px;}
+
 /* ── misc ───────────────────────────── */
 .btnrow{display:flex;gap:8px;margin:18px 0 8px;}
 .btnrow button{
@@ -254,6 +349,7 @@ section.tabpane.on{display:block;}
     <nav class="tabs" id="tabs">
       <button data-tab="today" class="on">오늘의 루틴</button>
       <button data-tab="week">주간 한눈에</button>
+      <button data-tab="cal">📅 달력</button>
       <button data-tab="road">학습 로드맵</button>
       <button data-tab="books">📚 전집 회독</button>
     </nav>
@@ -264,24 +360,57 @@ section.tabpane.on{display:block;}
 
   <!-- 오늘의 루틴 -->
   <section class="tabpane on" id="pane-today">
+    <div class="datebar" id="dateBar">
+      <button class="nvb" data-navwk="-1" aria-label="지난주">‹ 지난주</button>
+      <div class="dbcenter">
+        <div class="dbdate" id="dateLine"></div>
+        <button class="dbtoday" id="goToday">오늘</button>
+      </div>
+      <button class="nvb" data-navwk="1" aria-label="다음주">다음주 ›</button>
+    </div>
     <div class="daybar" id="daybar"></div>
-    <div class="date-line" id="dateLine"></div>
     <div class="trackbar" id="trackbar"></div>
     <div id="routineView"></div>
     <div class="btnrow">
       <button id="resetDay">선택한 날 초기화</button>
-      <button id="resetWeek">이번 주 초기화</button>
+      <button id="resetWeek">이 주 초기화</button>
     </div>
   </section>
 
   <!-- 주간 한눈에 -->
   <section class="tabpane" id="pane-week">
+    <div class="weekbar" id="weekBar"></div>
     <div class="sec-head">👩 엄마</div>
     <div class="card" id="weekMom"></div>
     <div class="sec-head">👧 아이</div>
     <div class="card" id="weekKid"></div>
-    <div class="weekly-note">동화책은 하루 2권 · 주간 목표 14권. 점 하나가 하루예요(월→일).</div>
-    <div class="btnrow"><button id="resetWeek2">이번 주 초기화</button></div>
+    <div class="weekly-note">동화책은 하루 2권 · 주간 목표 14권. 칸 하나가 하루예요(월→일).</div>
+    <div class="btnrow"><button id="resetWeek2">이 주 초기화</button></div>
+  </section>
+
+  <!-- 달력 -->
+  <section class="tabpane" id="pane-cal">
+    <div class="calbar">
+      <button class="nvb" data-navmo="-1">‹ 이전달</button>
+      <div class="cmonth" id="calMonthLabel"></div>
+      <button class="nvb" data-navmo="1">다음달 ›</button>
+    </div>
+    <div class="callegend">
+      <span><i class="mom"></i>엄마 달성</span>
+      <span><i class="kid"></i>아이 달성</span>
+      <span><i class="ex"></i>운동 완료</span>
+      <span>점이 진할수록 달성도가 높아요</span>
+    </div>
+    <div class="calhead">
+      <span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span class="sat">토</span><span class="sun">일</span>
+    </div>
+    <div class="calgrid" id="calGrid"></div>
+    <div class="sec-head">📋 고른 날 요약</div>
+    <div class="card" id="calDetail"></div>
+    <div class="sec-head">📊 이 달 누적</div>
+    <div id="calMonthSummary"></div>
+    <div class="btnrow"><button id="calToday">오늘 날짜로 이동</button></div>
+    <div style="height:16px"></div>
   </section>
 
   <!-- 학습 로드맵 -->
@@ -434,51 +563,115 @@ function kidTasks(dow){
 }
 
 /* ───────────────────── state & dates ──────────────────── */
+var LS_DEFAULT = {checks:{}, collections:{}, hangul:{}, math:{}, mathMemo:{}, books:{}};
+
 function loadState(){
+  var s = {};
+  for(var dk in LS_DEFAULT) s[dk] = LS_DEFAULT[dk];
   try{
     var raw = localStorage.getItem(LS_KEY);
     if(raw){
-      var s = JSON.parse(raw);
-      return {
-        checks: s.checks || {},
-        collections: s.collections || {},
-        hangul: s.hangul || {},
-        math: s.math || {},
-        mathMemo: s.mathMemo || {},
-        books: s.books || {}
-      };
+      var p = JSON.parse(raw);
+      for(var k2 in p){ if(Object.prototype.hasOwnProperty.call(p, k2)) s[k2] = p[k2]; }
     }
   }catch(e){}
-  return {checks:{}, collections:{}, hangul:{}, math:{}, mathMemo:{}, books:{}};
+  if(!s.checks || typeof s.checks !== 'object') s.checks = {};
+  if(!s.collections || typeof s.collections !== 'object') s.collections = {};
+  if(!s.hangul || typeof s.hangul !== 'object') s.hangul = {};
+  if(!s.math || typeof s.math !== 'object') s.math = {};
+  if(!s.mathMemo || typeof s.mathMemo !== 'object') s.mathMemo = {};
+  if(!s.books || typeof s.books !== 'object') s.books = {};
+  return s;
 }
-var state = loadState();
-function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
 
 function pad2(n){ return (n < 10 ? '0' : '') + n; }
 function dstr(d){ return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate()); }
-function dowOfDateStr(ds){
-  var p = ds.split('-');
-  return (new Date(+p[0], +p[1]-1, +p[2]).getDay() + 6) % 7; /* 월=0 */
+function parseDS(ds){
+  var p = String(ds).split('-');
+  return new Date(+p[0], +p[1]-1, +p[2]);
 }
-function todayDow(){ return (new Date().getDay() + 6) % 7; }
-function weekDates(){
-  var now = new Date();
-  var mon = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay()+6)%7));
+function dowOfDateStr(ds){ return (parseDS(ds).getDay() + 6) % 7; } /* 월=0 */
+function addDays(ds, n){
+  var d = parseDS(ds);
+  d.setDate(d.getDate() + n);
+  return dstr(d);
+}
+function mondayOf(ds){ return addDays(ds, -dowOfDateStr(ds)); }
+function weekDatesOf(start){
   var out = [];
-  for(var i = 0; i < 7; i++){
-    var d = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + i);
-    out.push(dstr(d));
-  }
+  for(var i = 0; i < 7; i++) out.push(addDays(start, i));
   return out;
 }
-function dateOfDow(dow){
-  var now = new Date();
-  var mon = new Date(now.getFullYear(), now.getMonth(), now.getDate() - ((now.getDay()+6)%7));
-  return new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + dow);
+function fmtLong(ds){
+  var d = parseDS(ds);
+  return d.getFullYear() + '년 ' + (d.getMonth()+1) + '월 ' + d.getDate() + '일 (' + DOWS[dowOfDateStr(ds)] + ')';
+}
+function fmtShort(ds){
+  var d = parseDS(ds);
+  return (d.getMonth()+1) + '.' + d.getDate();
 }
 
-var selDow = todayDow();
+var TODAY = dstr(new Date());
+
+/* ── 예전 요일(mon~sun) 기준 저장 데이터 → 이번 주 날짜 키로 이전 ── */
+var LEGACY_DOW = {
+  mon:0, tue:1, wed:2, thu:3, fri:4, sat:5, sun:6,
+  monday:0, tuesday:1, wednesday:2, thursday:3, friday:4, saturday:5, sunday:6,
+  '월':0, '화':1, '수':2, '목':3, '금':4, '토':5, '일':6
+};
+
+function migrateWeekdayKeys(s){
+  var mon = mondayOf(TODAY);
+  var changed = false;
+  var store, k, tds, target, legacy, id, i, cur;
+
+  /* 루틴 체크 */
+  store = s.checks;
+  for(k in store){
+    if(!Object.prototype.hasOwnProperty.call(store, k)) continue;
+    if(!Object.prototype.hasOwnProperty.call(LEGACY_DOW, k)) continue;
+    tds = addDays(mon, LEGACY_DOW[k]);
+    target = store[tds] || {};
+    legacy = (store[k] && typeof store[k] === 'object') ? store[k] : {};
+    for(id in legacy){
+      if(Object.prototype.hasOwnProperty.call(legacy, id) && !target[id]) target[id] = legacy[id];
+    }
+    store[tds] = target;
+    delete store[k];
+    changed = true;
+  }
+
+  /* 전집 태그 */
+  store = s.collections;
+  for(k in store){
+    if(!Object.prototype.hasOwnProperty.call(store, k)) continue;
+    if(!Object.prototype.hasOwnProperty.call(LEGACY_DOW, k)) continue;
+    tds = addDays(mon, LEGACY_DOW[k]);
+    cur = store[tds];
+    if(Object.prototype.toString.call(cur) !== '[object Array]') cur = [];
+    legacy = store[k];
+    if(Object.prototype.toString.call(legacy) !== '[object Array]') legacy = [];
+    for(i = 0; i < legacy.length; i++){
+      if(cur.indexOf(legacy[i]) < 0) cur.push(legacy[i]);
+    }
+    store[tds] = cur;
+    delete store[k];
+    changed = true;
+  }
+  return changed;
+}
+
+var state = loadState();
+function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+if(migrateWeekdayKeys(state)) save();
+
+/* 화면 상태 */
+var selDate = TODAY;                /* 오늘의 루틴 탭에서 보고 있는 날짜 */
+var weekStart = mondayOf(TODAY);    /* 주간 한눈에 탭에서 보고 있는 주(월요일) */
 var selTrack = 'kid';
+var calY = parseDS(TODAY).getFullYear();
+var calM = parseDS(TODAY).getMonth();   /* 0~11 */
+var calSel = TODAY;                     /* 달력에서 고른 날짜 */
 
 /* ───────────────────── helpers ────────────────────────── */
 function getChecks(ds){
@@ -501,10 +694,28 @@ function trackProgress(ds, track){
   return {done: done, total: ids.length};
 }
 
+/* 그날의 엄마/아이 달성도·운동·동화책·전집 태그를 한 번에 */
+function dayStats(ds){
+  var mom = trackProgress(ds, 'mom');
+  var kid = trackProgress(ds, 'kid');
+  var c = state.checks[ds] || {};
+  var momPct = mom.total ? Math.round(mom.done / mom.total * 100) : 0;
+  var kidPct = kid.total ? Math.round(kid.done / kid.total * 100) : 0;
+  var colls = state.collections[ds];
+  if(Object.prototype.toString.call(colls) !== '[object Array]') colls = [];
+  return {
+    mom: mom, kid: kid, momPct: momPct, kidPct: kidPct,
+    ex: !!c.m_ex,
+    books: (c.k_book1 ? 1 : 0) + (c.k_book2 ? 1 : 0),
+    colls: colls,
+    any: (mom.done + kid.done) > 0
+  };
+}
+
 /* ───────────────────── render: today ──────────────────── */
-function itemHTML(t, checks, acc, accSoft){
+function itemHTML(t, checks, acc, accSoft, ds){
   if(t.collections){
-    var sel = state.collections[curDS()] || [];
+    var sel = state.collections[ds] || [];
     var chips = '';
     for(var i = 0; i < COLLECTIONS.length; i++){
       var name = COLLECTIONS[i];
@@ -526,18 +737,34 @@ function itemHTML(t, checks, acc, accSoft){
   '</button>';
 }
 
+function renderDateBar(){
+  var sameWeek = (mondayOf(selDate) === mondayOf(TODAY));
+  var hint;
+  if(selDate === TODAY) hint = '오늘';
+  else if(sameWeek) hint = '이번 주 · 조회/수정 가능';
+  else if(selDate < TODAY) hint = '지난 기록 · 조회/수정 가능';
+  else hint = '앞으로의 날짜';
+  document.getElementById('dateLine').innerHTML = fmtLong(selDate) + '<small>' + hint + '</small>';
+  var btn = document.getElementById('goToday');
+  btn.className = 'dbtoday' + (selDate === TODAY ? ' on' : '');
+  btn.textContent = selDate === TODAY ? '오늘' : '오늘로';
+}
+
 function renderDaybar(){
+  var monday = mondayOf(selDate);
   var html = '';
-  var tDow = todayDow();
   for(var i = 0; i < 7; i++){
-    html += '<button data-dow="' + i + '" class="' + (i === selDow ? 'on' : '') +
-            (i === tDow ? ' today-mark' : '') + '">' + DOWS[i] + '</button>';
+    var ds = addDays(monday, i);
+    html += '<button data-ds="' + ds + '" class="' + (ds === selDate ? 'on ' : '') +
+            (ds === TODAY ? 'today-mark ' : '') + (ds > TODAY ? 'future' : '') + '">' +
+            '<span class="dw">' + DOWS[i] + '</span>' +
+            '<span class="dn">' + parseDS(ds).getDate() + '</span></button>';
   }
   document.getElementById('daybar').innerHTML = html;
 }
 
 function renderTrackbar(){
-  var ds = curDS();
+  var ds = selDate;
   var mom = trackProgress(ds, 'mom');
   var kid = trackProgress(ds, 'kid');
   var momPct = mom.total ? Math.round(mom.done / mom.total * 100) : 0;
@@ -554,13 +781,9 @@ function renderTrackbar(){
 }
 
 function renderRoutine(){
-  var dow = selDow;
-  var ds = curDS();
+  var dow = dowOfDateStr(selDate);
+  var ds = selDate;
   var checks = state.checks[ds] || {};
-  var d = dateOfDow(dow);
-  document.getElementById('dateLine').innerHTML =
-    '<b>' + (d.getMonth()+1) + '월 ' + d.getDate() + '일 (' + DOWS[dow] + ')</b>' +
-    (dow === todayDow() ? ' · 오늘' : '');
 
   var acc, accSoft, accDeep, list, head;
   if(selTrack === 'mom'){
@@ -600,12 +823,12 @@ function renderRoutine(){
         html += '<div class="focusblock"><div class="focuslabel">🌙 저녁 집중 루틴 · 간식 먹으며 20:30~21:20</div><div>';
         focusOpen = true;
         for(var k = 0; k < it.items.length; k++){
-          html += itemHTML(it.items[k], checks, acc, accSoft);
+          html += itemHTML(it.items[k], checks, acc, accSoft, ds);
         }
         if(j === rest.length - 1){ html += '</div></div>'; focusOpen = false; }
       } else {
         if(focusOpen){ html += '</div></div>'; focusOpen = false; }
-        html += itemHTML(it, checks, acc, accSoft);
+        html += itemHTML(it, checks, acc, accSoft, ds);
       }
     }
     if(focusOpen) html += '</div></div>';
@@ -613,17 +836,19 @@ function renderRoutine(){
   } else {
     html += '<div class="sec-head">' + head + '</div><div class="card">';
     for(var m = 0; m < list.length; m++){
-      html += itemHTML(list[m], checks, acc, accSoft);
+      html += itemHTML(list[m], checks, acc, accSoft, ds);
     }
     html += '</div>';
   }
 
   document.getElementById('routineView').innerHTML = html;
+  var sd = parseDS(selDate);
   document.getElementById('resetDay').textContent =
-    (selDow === todayDow() ? '오늘 초기화' : DOWS[selDow] + '요일 초기화');
+    (selDate === TODAY ? '오늘 초기화' : (sd.getMonth()+1) + '/' + sd.getDate() + ' 초기화');
 }
 
 function renderToday(){
+  renderDateBar();
   renderDaybar();
   renderTrackbar();
   renderRoutine();
@@ -639,18 +864,39 @@ var WEEK_ROWS = [
   {group:'kid', label:'미술 놀이 (토)', target:1, ids:['k_art']}
 ];
 
-function rowHTML(row){
-  var dss = weekDates();
+function weekDiff(start){
+  return Math.round((parseDS(start) - parseDS(mondayOf(TODAY))) / 86400000 / 7);
+}
+
+function renderWeekBar(){
+  var wd = weekDatesOf(weekStart);
+  var diff = weekDiff(weekStart);
+  var range = '(' + fmtShort(wd[0]) + ' ~ ' + fmtShort(wd[6]) + ')';
+  var label;
+  if(diff === 0) label = '이번 주 ' + range;
+  else if(diff === -1) label = '지난주 ' + range;
+  else if(diff === 1) label = '다음주 ' + range;
+  else label = fmtShort(wd[0]) + ' ~ ' + fmtShort(wd[6]) + ' · ' +
+              (diff < 0 ? Math.abs(diff) + '주 전' : diff + '주 후');
+  document.getElementById('weekBar').innerHTML =
+    '<button class="nvb" data-navwk="-1">‹ 지난주</button>' +
+    '<button class="wvlabel' + (diff === 0 ? ' on' : '') + '" data-weeknow="1">' + label +
+      (diff === 0 ? '' : '<small>이번 주로 돌아가기</small>') + '</button>' +
+    '<button class="nvb" data-navwk="1">다음주 ›</button>';
+}
+
+function weekRowHTML(row, wd){
   var n = 0;
   var dots = '';
   for(var i = 0; i < 7; i++){
-    var c = state.checks[dss[i]] || {};
+    var c = state.checks[wd[i]] || {};
     var hit = true;
     for(var j = 0; j < row.ids.length; j++){
       if(!c[row.ids[j]]){ hit = false; break; }
     }
     if(hit) n++;
-    dots += '<span class="' + (hit ? 'hit' : '') + '">' + DOWS[i] + '</span>';
+    dots += '<span class="' + (hit ? 'hit' : '') + '">' + DOWS[i] + ' ' +
+            parseDS(wd[i]).getDate() + '</span>';
   }
   var pct = Math.min(100, Math.round(n / row.target * 100));
   return '<div class="wrow ' + row.group + '">' +
@@ -662,19 +908,21 @@ function rowHTML(row){
 }
 
 function renderWeek(){
+  renderWeekBar();
+  var wd = weekDatesOf(weekStart);
   var mom = '', kid = '';
   for(var i = 0; i < WEEK_ROWS.length; i++){
-    if(WEEK_ROWS[i].group === 'mom') mom += rowHTML(WEEK_ROWS[i]);
-    else kid += rowHTML(WEEK_ROWS[i]);
+    if(WEEK_ROWS[i].group === 'mom') mom += weekRowHTML(WEEK_ROWS[i], wd);
+    else kid += weekRowHTML(WEEK_ROWS[i], wd);
   }
   /* 동화책: 하루 2권 */
-  var dss = weekDates();
   var books = 0, bdots = '';
   for(var d = 0; d < 7; d++){
-    var c = state.checks[dss[d]] || {};
+    var c = state.checks[wd[d]] || {};
     var dayN = (c.k_book1 ? 1 : 0) + (c.k_book2 ? 1 : 0);
     books += dayN;
-    bdots += '<span class="' + (dayN === 2 ? 'hit' : '') + '">' + DOWS[d] + '</span>';
+    bdots += '<span class="' + (dayN === 2 ? 'hit' : '') + '">' + DOWS[d] + ' ' +
+             parseDS(wd[d]).getDate() + '</span>';
   }
   var bpct = Math.min(100, Math.round(books / 14 * 100));
   kid += '<div class="wrow kid">' +
@@ -685,6 +933,114 @@ function renderWeek(){
 
   document.getElementById('weekMom').innerHTML = mom || '<div class="empty">기록 없음</div>';
   document.getElementById('weekKid').innerHTML = kid || '<div class="empty">기록 없음</div>';
+}
+
+/* ───────────────────── render: 달력 ───────────────────── */
+function dotOpacity(p){
+  if(p >= 100) return 1;
+  if(p >= 60) return .8;
+  if(p >= 30) return .55;
+  if(p > 0) return .35;
+  return .12;
+}
+
+function renderCal(){
+  document.getElementById('calMonthLabel').innerHTML = calY + '년 ' + (calM+1) + '월';
+  var firstDS = calY + '-' + pad2(calM+1) + '-01';
+  var lead = dowOfDateStr(firstDS);
+  var daysInMonth = new Date(calY, calM+1, 0).getDate();
+  var html = '';
+  for(var b = 0; b < lead; b++) html += '<span class="ccell blank"></span>';
+  for(var d = 1; d <= daysInMonth; d++){
+    var ds = calY + '-' + pad2(calM+1) + '-' + pad2(d);
+    var st = dayStats(ds);
+    var avg = Math.round((st.momPct + st.kidPct) / 2);
+    var alpha = (0.03 + 0.12 * avg / 100).toFixed(3);
+    var cls = 'ccell' + (ds === TODAY ? ' today' : '') + (ds === calSel ? ' sel' : '');
+    html += '<button class="' + cls + '" data-ds="' + ds + '" ' +
+      'style="background:rgba(127,167,143,' + alpha + ')">' +
+      '<span class="cday">' + d + '</span>' +
+      ((st.any || st.colls.length) ?
+        '<span class="cdots">' +
+          '<i class="cdot mom" style="opacity:' + dotOpacity(st.momPct) + '"></i>' +
+          '<i class="cdot kid" style="opacity:' + dotOpacity(st.kidPct) + '"></i>' +
+        '</span>' : '') +
+      (st.ex ? '<span class="cflag">운</span>' : '') +
+    '</button>';
+  }
+  document.getElementById('calGrid').innerHTML = html;
+  renderCalDetail();
+  renderCalSummary();
+}
+
+function renderCalDetail(){
+  var ds = calSel;
+  var st = dayStats(ds);
+  var html = '<div class="dhead">' + fmtLong(ds) +
+      (ds === TODAY ? '<span class="dtag">오늘</span>' : '') +
+      (st.any ? '' : '<span class="dtag">기록 없음</span>') +
+    '</div>' +
+    '<div class="dsrow"><span class="dsname">👩 엄마</span>' +
+      '<span class="dspct">' + st.momPct + '%</span>' +
+      '<span class="dsn">' + st.mom.done + '/' + st.mom.total + '</span>' +
+      '<span class="gauge"><i style="width:' + st.momPct + '%;background:var(--mom)"></i></span></div>' +
+    '<div class="dsrow"><span class="dsname">👧 아이</span>' +
+      '<span class="dspct">' + st.kidPct + '%</span>' +
+      '<span class="dsn">' + st.kid.done + '/' + st.kid.total + '</span>' +
+      '<span class="gauge"><i style="width:' + st.kidPct + '%;background:var(--kid)"></i></span></div>' +
+    '<div class="dmeta">' +
+      (st.ex ? '<span class="on">🏃 운동 완료</span>' : '<span>🏃 운동 없음</span>') +
+      '<span>📖 동화책 ' + st.books + '권</span>' +
+      '<span>📚 ' + (st.colls.length ? escHtml(st.colls.join(', ')) : '전집 태그 없음') + '</span>' +
+    '</div>' +
+    '<button class="dgo" data-calgo="' + ds + '">이 날 루틴 보기/수정 →</button>';
+  document.getElementById('calDetail').innerHTML = html;
+}
+
+function calMonthCounts(){
+  var daysInMonth = new Date(calY, calM+1, 0).getDate();
+  var o = {ex:0, box:0, hangul:0, math:0, eng:0, art:0, books:0, colls:0, recorded:0, sumPct:0};
+  for(var d = 1; d <= daysInMonth; d++){
+    var ds = calY + '-' + pad2(calM+1) + '-' + pad2(d);
+    var c = state.checks[ds] || {};
+    if(c.m_ex) o.ex++;
+    if(c.m_box) o.box++;
+    if(c.k_hangul) o.hangul++;
+    if(c.k_math) o.math++;
+    if(c.k_eng) o.eng++;
+    if(c.k_art) o.art++;
+    o.books += (c.k_book1 ? 1 : 0) + (c.k_book2 ? 1 : 0);
+    var cl = state.collections[ds];
+    if(Object.prototype.toString.call(cl) === '[object Array]') o.colls += cl.length;
+    var st = dayStats(ds);
+    if(st.any) o.recorded++;
+    o.sumPct += (st.momPct + st.kidPct) / 2;
+  }
+  o.days = daysInMonth;
+  o.avg = Math.round(o.sumPct / daysInMonth);
+  return o;
+}
+
+function msCell(label, value, unit){
+  return '<div class="mscell"><span class="msn">' + label + '</span>' +
+         '<span class="msv"><b>' + value + '</b>' + (unit ? ' ' + unit : '') + '</span></div>';
+}
+
+function renderCalSummary(){
+  var o = calMonthCounts();
+  document.getElementById('calMonthSummary').innerHTML =
+    '<div class="mstop">' + (calM+1) + '월 ' + o.days + '일 중 <b>' + o.recorded +
+      '일</b> 기록 · 하루 평균 달성도 <b>' + o.avg + '%</b></div>' +
+    '<div class="msgrid">' +
+      msCell('🏃 엄마 운동', o.ex, '회') +
+      msCell('🍱 도시락', o.box, '회') +
+      msCell('📖 동화책', o.books, '권') +
+      msCell('🔤 한글 놀이', o.hangul, '회') +
+      msCell('🔢 수학', o.math, '회') +
+      msCell('🌍 영어', o.eng, '회') +
+      msCell('🎨 미술', o.art, '회') +
+      msCell('📚 전집 태그', o.colls, '회') +
+    '</div>';
 }
 
 /* ───────────────────── render: roadmap ────────────────── */
@@ -929,27 +1285,92 @@ document.getElementById('bookReset').addEventListener('click', function(){
 });
 
 /* ───────────────────── events ─────────────────────────── */
-function curDS(){ return dstr(dateOfDow(selDow)); }
+function switchTab(tab){
+  var btns = document.querySelectorAll('#tabs button');
+  for(var i = 0; i < btns.length; i++){
+    btns[i].classList.toggle('on', btns[i].getAttribute('data-tab') === tab);
+  }
+  var panes = document.querySelectorAll('.tabpane');
+  for(var j = 0; j < panes.length; j++) panes[j].classList.remove('on');
+  document.getElementById('pane-' + tab).classList.add('on');
+  if(tab === 'today') renderToday();
+  if(tab === 'week') renderWeek();
+  if(tab === 'cal') renderCal();
+  if(tab === 'road') renderRoad();
+  if(tab === 'books') renderBooks();
+  try{ if(typeof window.scrollTo === 'function') window.scrollTo(0, 0); }catch(e){}
+}
 
 document.getElementById('tabs').addEventListener('click', function(e){
   var b = e.target.closest('button[data-tab]');
   if(!b) return;
-  var tab = b.getAttribute('data-tab');
-  var btns = document.querySelectorAll('#tabs button');
-  for(var i = 0; i < btns.length; i++) btns[i].classList.toggle('on', btns[i] === b);
-  var panes = document.querySelectorAll('.tabpane');
-  for(var j = 0; j < panes.length; j++) panes[j].classList.remove('on');
-  document.getElementById('pane-' + tab).classList.add('on');
-  if(tab === 'week') renderWeek();
-  if(tab === 'road') renderRoad();
-  if(tab === 'books') renderBooks();
+  switchTab(b.getAttribute('data-tab'));
 });
 
+/* 오늘 탭: 날짜 바(지난주/다음주/오늘) */
+document.getElementById('dateBar').addEventListener('click', function(e){
+  var nav = e.target.closest('[data-navwk]');
+  if(nav){
+    selDate = addDays(selDate, (+nav.getAttribute('data-navwk')) * 7);
+    renderToday();
+    return;
+  }
+  if(e.target.closest('#goToday')){
+    selDate = TODAY;
+    renderToday();
+  }
+});
+
+/* 오늘 탭: 날짜 칩 */
 document.getElementById('daybar').addEventListener('click', function(e){
-  var b = e.target.closest('button[data-dow]');
+  var b = e.target.closest('button[data-ds]');
   if(!b) return;
-  selDow = +b.getAttribute('data-dow');
+  selDate = b.getAttribute('data-ds');
   renderToday();
+});
+
+/* 주간 한눈에: 주 이동 */
+document.getElementById('weekBar').addEventListener('click', function(e){
+  var nav = e.target.closest('[data-navwk]');
+  if(nav){
+    weekStart = addDays(weekStart, (+nav.getAttribute('data-navwk')) * 7);
+    renderWeek();
+    return;
+  }
+  if(e.target.closest('[data-weeknow]')){
+    weekStart = mondayOf(TODAY);
+    renderWeek();
+  }
+});
+
+/* 달력: 월 이동 · 날짜 선택 · 그 날 루틴으로 이동 */
+document.getElementById('pane-cal').addEventListener('click', function(e){
+  var nav = e.target.closest('[data-navmo]');
+  if(nav){
+    calM += (+nav.getAttribute('data-navmo'));
+    if(calM < 0){ calM = 11; calY--; }
+    if(calM > 11){ calM = 0; calY++; }
+    renderCal();
+    return;
+  }
+  var cell = e.target.closest('.ccell[data-ds]');
+  if(cell){
+    calSel = cell.getAttribute('data-ds');
+    renderCal();
+    return;
+  }
+  var go = e.target.closest('[data-calgo]');
+  if(go){
+    selDate = go.getAttribute('data-calgo');
+    switchTab('today');
+    return;
+  }
+  if(e.target.closest('#calToday')){
+    calY = parseDS(TODAY).getFullYear();
+    calM = parseDS(TODAY).getMonth();
+    calSel = TODAY;
+    renderCal();
+  }
 });
 
 document.getElementById('trackbar').addEventListener('click', function(e){
@@ -962,7 +1383,7 @@ document.getElementById('trackbar').addEventListener('click', function(e){
 document.getElementById('routineView').addEventListener('click', function(e){
   var task = e.target.closest('[data-task]');
   if(task){
-    var ds = curDS();
+    var ds = selDate;
     var c = getChecks(ds);
     var id = task.getAttribute('data-task');
     if(c[id]) delete c[id]; else c[id] = 1;
@@ -972,7 +1393,7 @@ document.getElementById('routineView').addEventListener('click', function(e){
   }
   var coll = e.target.closest('[data-coll]');
   if(coll){
-    var ds2 = curDS();
+    var ds2 = selDate;
     var name = coll.getAttribute('data-coll');
     var arr = state.collections[ds2] || [];
     var idx = arr.indexOf(name);
@@ -1023,23 +1444,23 @@ function clearDates(dss){
   save();
 }
 function resetDay(){
-  var label = (selDow === todayDow()) ? '오늘' : DOWS[selDow] + '요일';
-  if(!confirm(label + ' 체크를 모두 지울까요?')) return;
-  clearDates([curDS()]);
+  if(!confirm(fmtLong(selDate) + ' 체크를 모두 지울까요?')) return;
+  clearDates([selDate]);
   renderAll();
 }
-function resetWeek(){
-  if(!confirm('이번 주(월~일) 체크를 모두 지울까요?')) return;
-  clearDates(weekDates());
+function resetWeekOf(start){
+  if(!confirm('이 주(' + fmtShort(start) + ' ~ ' + fmtShort(addDays(start, 6)) + ') 체크를 모두 지울까요?')) return;
+  clearDates(weekDatesOf(start));
   renderAll();
 }
 document.getElementById('resetDay').addEventListener('click', resetDay);
-document.getElementById('resetWeek').addEventListener('click', resetWeek);
-document.getElementById('resetWeek2').addEventListener('click', resetWeek);
+document.getElementById('resetWeek').addEventListener('click', function(){ resetWeekOf(mondayOf(selDate)); });
+document.getElementById('resetWeek2').addEventListener('click', function(){ resetWeekOf(weekStart); });
 
 function renderAll(){
   renderToday();
   renderWeek();
+  renderCal();
   renderRoad();
   renderBooks();
 }
