@@ -942,10 +942,9 @@ function renderWeek(){
 /* ───────────────────── render: 달력 ───────────────────── */
 function dotOpacity(p){
   if(p >= 100) return 1;
-  if(p >= 60) return .8;
-  if(p >= 30) return .55;
-  if(p > 0) return .35;
-  return .12;
+  if(p >= 50) return .85;
+  if(p > 0) return .6;
+  return .18;
 }
 
 function renderCal(){
@@ -959,7 +958,7 @@ function renderCal(){
     var ds = calY + '-' + pad2(calM+1) + '-' + pad2(d);
     var st = dayStats(ds);
     var avg = Math.round((st.momPct + st.kidPct) / 2);
-    var alpha = (0.03 + 0.16 * avg / 100).toFixed(3);
+    var alpha = (0.04 + 0.22 * avg / 100).toFixed(3);
     var cls = 'ccell' + (ds === TODAY ? ' today' : '') + (ds === calSel ? ' sel' : '');
     html += '<button class="' + cls + '" data-ds="' + ds + '" ' +
       'style="background:rgba(127,167,143,' + alpha + ')">' +
