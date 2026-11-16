@@ -45,10 +45,13 @@ h1{font-size:19px;font-weight:800;letter-spacing:-.3px;}
 .top-sub{font-size:12px;color:var(--sub);margin-top:2px;}
 nav.tabs{display:flex;gap:6px;margin-top:12px;}
 nav.tabs button{
-  flex:1;border:none;background:transparent;color:var(--sub);
-  font:inherit;font-size:12.5px;font-weight:700;
-  padding:10px 2px 11px;cursor:pointer;border-radius:12px 12px 0 0;
+  flex:1;min-width:0;border:none;background:transparent;color:var(--sub);
+  font:inherit;font-size:12px;font-weight:700;letter-spacing:-.4px;white-space:nowrap;
+  padding:10px 0 11px;cursor:pointer;border-radius:12px 12px 0 0;
   border-bottom:2.5px solid transparent;
+}
+@media (max-width:410px){
+  nav.tabs button{font-size:10.5px;letter-spacing:-.5px;}
 }
 nav.tabs button.on{color:var(--ink);border-bottom-color:var(--ink);}
 
@@ -288,12 +291,13 @@ nav.tabs button.on{color:var(--ink);border-bottom-color:var(--ink);}
   font:inherit;cursor:pointer;
 }
 .ccell.blank{background:transparent;border-color:transparent;cursor:default;}
-.ccell .cday{font-size:12px;font-weight:800;color:#5b554f;line-height:1;}
+.ccell .cday{font-size:12.5px;font-weight:800;color:#4a4540;line-height:1;}
 .ccell.today{box-shadow:0 0 0 2px rgba(217,164,65,.75);}
 .ccell.sel{border-color:var(--ink);border-width:2px;}
 .ccell.sel.today{box-shadow:0 0 0 2px rgba(217,164,65,.4);}
-.cdots{display:flex;gap:3px;}
-.cdot{width:7px;height:7px;border-radius:50%;display:block;}
+.ccell.sel .cday{font-weight:900;}
+.cdots{display:flex;gap:4px;}
+.cdot{width:8px;height:8px;border-radius:50%;display:block;}
 .cdot.mom{background:var(--mom);}
 .cdot.kid{background:var(--kid);}
 .cflag{position:absolute;top:2px;right:3px;font-size:8px;font-weight:800;color:#a97f2e;line-height:1;}
@@ -955,7 +959,7 @@ function renderCal(){
     var ds = calY + '-' + pad2(calM+1) + '-' + pad2(d);
     var st = dayStats(ds);
     var avg = Math.round((st.momPct + st.kidPct) / 2);
-    var alpha = (0.03 + 0.12 * avg / 100).toFixed(3);
+    var alpha = (0.03 + 0.16 * avg / 100).toFixed(3);
     var cls = 'ccell' + (ds === TODAY ? ' today' : '') + (ds === calSel ? ' sel' : '');
     html += '<button class="' + cls + '" data-ds="' + ds + '" ' +
       'style="background:rgba(127,167,143,' + alpha + ')">' +
@@ -1017,7 +1021,7 @@ function calMonthCounts(){
     o.sumPct += (st.momPct + st.kidPct) / 2;
   }
   o.days = daysInMonth;
-  o.avg = Math.round(o.sumPct / daysInMonth);
+  o.avg = o.recorded ? Math.round(o.sumPct / o.recorded) : 0;
   return o;
 }
 
@@ -1030,7 +1034,7 @@ function renderCalSummary(){
   var o = calMonthCounts();
   document.getElementById('calMonthSummary').innerHTML =
     '<div class="mstop">' + (calM+1) + '월 ' + o.days + '일 중 <b>' + o.recorded +
-      '일</b> 기록 · 하루 평균 달성도 <b>' + o.avg + '%</b></div>' +
+      '일</b> 기록 · 기록한 날 평균 달성도 <b>' + o.avg + '%</b></div>' +
     '<div class="msgrid">' +
       msCell('🏃 엄마 운동', o.ex, '회') +
       msCell('🍱 도시락', o.box, '회') +
