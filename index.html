@@ -502,9 +502,9 @@ function momTasks(dow){
     }
     t.push(
       {id:'m_work',  time:'06:30',       title:'출근', sub:'08:30~18:20 근무'},
-      {id:'m_go',    time:'18:20',       title:'퇴근 → 아이 픽업 → 귀가', sub:'19:40~50 픽업 · 20:10 귀가'},
-      {id:'m_wash',  time:'20:10~20:30', title:'아이 씻기기'},
-      {id:'m_dinner',time:'20:30~21:20', title:'내 저녁 식사 & 아이 간식·루틴 함께'},
+      {id:'m_go',    time:'18:20',       title:'퇴근 → 아이 픽업 → 귀가', sub:'19:40~50 픽업 · 20:00 귀가'},
+      {id:'m_wash',  time:'20:00~20:20', title:'아이 씻기기'},
+      {id:'m_dinner',time:'20:20~21:20', title:'내 저녁 식사 & 아이 간식·영상·루틴 함께'},
       {id:'m_bed',   time:'21:20',       title:'아이 재우기'},
       {id:'m_ex',    time:'21:25~',      title:'짧은 운동 20~30분', sub:'주 3회 목표 · 이번 주 확인은 주간 탭에서', tag:'운동'}
     );
@@ -523,23 +523,25 @@ function kidTasks(dow){
   var bookTime;
   if(dow <= 4){
     var mission = isHangulDay
-      ? {id:'k_hangul', time:'20:30~20:50', title:'한글 놀이 20분',
+      ? {id:'k_hangul', time:'20:40~21:00', title:'한글 놀이 20분',
          sub:'오늘의 미션 · 자음 거꾸로/모음/낱말 놀이', tag:'한글'}
-      : {id:'k_math', time:'20:30~20:50', title:'수학 팩토슐레 20분',
+      : {id:'k_math', time:'20:40~20:55', title:'수학 팩토슐레 15분',
          sub:'오늘의 미션 · 진도 나온 유닛', tag:'수학'};
     var t = [
       {id:'k_morning', time:'07:30~08:00',
        title:'기상 · 화장실 · 세수/양치 · 옷입기 · 아침식사 · 유치원 등원'},
-      {id:'k_home', time:'19:40~20:10',
-       title:'픽업 → 귀가 · 씻기', sub:'19:40~50 엄마 픽업 · 20:00~10 귀가 후 씻기'},
+      {id:'k_home', time:'19:40~20:20',
+       title:'픽업 → 귀가 · 씻기', sub:'19:40~50 엄마 픽업 · 20:00~20:20 귀가 후 씻기'},
+      {id:'k_video', time:'20:20~20:40', title:'영상 시간 (20분)',
+       sub:'간식 먹으며 시청 · 20분 지나면 끄기', tag:'영상'},
       mission
     ];
     if(!isHangulDay){
-      t.push({id:'k_eng', time:'20:50~21:00', title:'유치원 영어 복습 10분',
+      t.push({id:'k_eng', time:'20:55~21:05', title:'유치원 영어 복습 10분',
               sub:'오늘 배운 것 따라 읽기', tag:'영어'});
-      bookTime = '21:00~21:20';
+      bookTime = '21:05~21:20';
     } else {
-      bookTime = '20:50~21:20';
+      bookTime = '21:00~21:20';
     }
     t.push(
       {id:'k_book1', time:bookTime, title:'동화책 1권', sub:'엄마랑 소리 내어 읽기'},
@@ -552,6 +554,8 @@ function kidTasks(dow){
   if(dow === 5){ /* 토 */
     return [
       {id:'k_art', time:'주말 자유 시간', title:'미술 놀이', sub:'물감·클레이·자유 그리기 · 미술 대회 그림도 OK', tag:'미술'},
+      {id:'k_video', time:'오후', title:'영상 시간 (20분)',
+       sub:'간식 먹으며 시청 · 20분 지나면 끄기', tag:'영상'},
       {id:'k_book1', time:'취침 전', title:'동화책 1권', sub:'엄마랑 소리 내어 읽기'},
       {id:'k_book2', time:'취침 전', title:'동화책 2권', sub:'다 읽으면 오늘의 미선 스티커!'},
       {collections:true}
@@ -560,6 +564,8 @@ function kidTasks(dow){
   /* 일 */
   return [
     {id:'k_free', time:'하루 종일', title:'가족 자유의 날', sub:'휴식 · 나들이 · 야외 놀이 · 공부 없는 날'},
+    {id:'k_video', time:'오후', title:'영상 시간 (20분)',
+     sub:'간식 먹으며 시청 · 20분 지나면 끄기', tag:'영상'},
     {id:'k_book1', time:'취침 전', title:'동화책 1권', sub:'엄마랑 소리 내어 읽기'},
     {id:'k_book2', time:'취침 전', title:'동화책 2권', sub:'다 읽으면 오늘의 미선 스티커!'},
     {collections:true}
@@ -802,7 +808,7 @@ function renderRoutine(){
 
   var html = '';
   if(selTrack === 'kid' && dow <= 4){
-    /* 아이 평일: 기상~씻기 / 저녁 집중 루틴(20:30~21:20) / 취침 구분 */
+    /* 아이 평일: 기상~씻기 · 영상 20분(20:20~20:40) / 저녁 집중 루틴(20:40~21:20) / 취침 구분 */
     var focusItems = [];
     var rest = [];
     var inFocus = false;
@@ -824,7 +830,7 @@ function renderRoutine(){
       var it = rest[j];
       if(it.focus){
         if(focusOpen){ html += '</div></div>'; focusOpen = false; }
-        html += '<div class="focusblock"><div class="focuslabel">🌙 저녁 집중 루틴 · 간식 먹으며 20:30~21:20</div><div>';
+        html += '<div class="focusblock"><div class="focuslabel">🌙 저녁 집중 루틴 · 20:40~21:20</div><div>';
         focusOpen = true;
         for(var k = 0; k < it.items.length; k++){
           html += itemHTML(it.items[k], checks, acc, accSoft, ds);
